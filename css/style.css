@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #121212;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+  }
+  
+  .neon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .neon-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 
+      0 0 5px #ff0000, 
+      0 0 10px #ff0000, 
+      0 0 20px #ff0000, 
+      0 0 40px #9b2d94, 
+      0 0 80px #9b2d94, 
+      0 0 90px #9b2d94, 
+      0 0 100px #9b2d94, 
+      0 0 150px #0000ff; /* Aggiunto blu per un effetto più dinamico */
+    margin: 20px 0;
+  }
+  
+  .neon-button {
+    background-color: transparent;
+    border: 2px solid #ff0000; /* Bordo rosso per i bottoni */
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 5px;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .neon-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #9b2d94; /* Viola come colore di espansione */
+    transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s;
+    border-radius: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+  }
+  
+  .neon-button:hover::before {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+  }
+  
+  .neon-button:hover {
+    color: #9b2d94; /* Colore viola quando si passa sopra il bottone */
+    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #9b2d94, 0 0 30px #0000ff; /* Effetto combinato di rosso, viola e blu */
+  }
+  
+  .neon-button:hover {
+    transition: all 0.3s ease;
+  }
+  
