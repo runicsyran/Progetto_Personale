@@ -187,8 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" value="Inserisci Film">
 
     </form>
-    <a href="gestione.php" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Torna a Gestione</a>
-
+    <a href="gestione.php" class="gestione_button">Torna a Gestione</a>
 </body>
 
 </html>
