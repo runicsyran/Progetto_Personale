@@ -1,84 +1,129 @@
- * {
+/* Imposta uno sfondo scuro con testo chiaro per un look futuristico */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: #121212;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+}
+
+/* Stile per i titoli */
+h1, h2, h3 {
+    color: #00d4ff;
     text-align: center;
-    color: white;
-  }
-  
-  .neon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .neon-text {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 
-      0 0 5px #ff0000, 
-      0 0 10px #ff0000, 
-      0 0 20px #ff0000, 
-      0 0 40px #9b2d94, 
-      0 0 80px #9b2d94, 
-      0 0 90px #9b2d94, 
-      0 0 100px #9b2d94, 
-      0 0 150px #0000ff; /* Aggiunto blu per un effetto più dinamico */
-    margin: 20px 0;
-  }
-  
-  .neon-button {
-    background-color: transparent;
-    border: 2px solid #ff0000; /* Bordo rosso per i bottoni */
-    padding: 15px 30px;
-    font-size: 1.5rem;
-    color: #fff;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin: 10px;
+    margin-bottom: 20px;
+}
+
+/* Stile per i paragrafi */
+p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+/* Stile per i pulsanti */
+button, input[type="submit"] {
+    background-color: #00d4ff;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
-    outline: none;
-    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #008fb3;
+}
+
+/* Stile per i link */
+a {
+    color: #00d4ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #008fb3;
+}
+
+/* Stile per i form */
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+/* Stile per le tabelle */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #2a2a2a;
+    border-radius: 10px;
     overflow: hidden;
-  }
-  
-  .neon-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background-color: #9b2d94; /* Viola come colore di espansione */
-    transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s;
-    border-radius: 50%;
-    z-index: 0;
-    transform: translate(-50%, -50%);
-  }
-  
-  .neon-button:hover::before {
-    width: 0;
-    height: 0;
-    top: 50%;
-    left: 50%;
-  }
-  
-  .neon-button:hover {
-    color: #9b2d94; /* Colore viola quando si passa sopra il bottone */
-    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #9b2d94, 0 0 30px #0000ff; /* Effetto combinato di rosso, viola e blu */
-  }
-  
-  .neon-button:hover {
-    transition: all 0.3s ease;
-  }
-  
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+th {
+    background-color: #00d4ff;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #333;
+}
+
+/* Stile per i contenitori */
+.film-container, .film-card {
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.film-card h4 {
+    margin: 0;
+    color: #00d4ff;
+}
+
+.logout-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+}
