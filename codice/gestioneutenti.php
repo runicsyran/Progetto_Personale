@@ -41,7 +41,7 @@ $result_users = $conn->query($sql_users);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestione Utenti</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <h1>Gestione Utenti</h1>

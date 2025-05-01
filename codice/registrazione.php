@@ -14,7 +14,7 @@
 
     <script src="js/Popup.js"></script>
 
-    <link rel="stylesheet" href="./s./style.css">
+    <link rel="stylesheet" href="./s../css/style.css">
 
 </head>
 

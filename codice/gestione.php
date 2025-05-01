@@ -38,7 +38,7 @@ if ($conn->connect_error) {
 
     <title>Gestione - Admin</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <a href="endSession.php" class="logout-button">Logout</a>

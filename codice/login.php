@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <title>Login Utente</title>
 
-    <link rel="stylesheet" href="./s./style.css">
+    <link rel="stylesheet" href="./s../css/style.css">
 
 </head>
 
