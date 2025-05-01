@@ -84,7 +84,7 @@ $result_users = $conn->query($sql_users);
             <?php endif; ?>
         </tbody>
     </table>
-
+    <a href="gestione.php" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Torna a Gestione</a>
     <?php $conn->close(); ?>
 </body>
 </html>
