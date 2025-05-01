@@ -57,7 +57,7 @@ if ($conn->connect_error) {
         <button onclick="location.href='gestioneutenti.php'" style="padding: 10px 20px; margin: 10px;">Gestisci utenti</button>
 
     </div>
-
+    <a href="home.php" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Torna a Gestione</a>
 </body>
 
 </html>
