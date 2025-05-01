@@ -98,7 +98,7 @@
 
             echo "Registrazione avvenuta con successo";
 
-            ?><meta http-equiv="refresh" content="0; url=https://michelangelocuccui.altervista.org/Ludoteca2/login.php"><?php       
+            ?><meta http-equiv="refresh" content="0; url=https://michelangelocuccui.altervista.org/codice/login.php"><?php       
 
             exit();
 
