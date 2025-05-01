@@ -129,7 +129,7 @@
     $conn->close();
 
     ?>
-    <a href="home.php" class="home_button">Torna a Gestione</a>
+    <a href="home.php" class="home_button">Torna alla Home</a>
 </body>
 
 </html>

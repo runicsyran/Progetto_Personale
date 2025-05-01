@@ -105,6 +105,7 @@
         } else {
 
             echo "Errore: " . $sql . "<br>" . $conn->error;
+            
 
         }
 
@@ -115,7 +116,7 @@
     }
 
     ?>
-
+    <a href="index.php" class="index_button">Torna Pagina Principale</a>
 </body>
 
 </html>

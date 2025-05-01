@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p>Non sei registrato? <a href="registrazione.php">Registrati qui</a></p>
 
     </form>
-
+    <a href="index.php" class="index_button">Torna Pagina Principale</a>
 </body>
 
 </html>
