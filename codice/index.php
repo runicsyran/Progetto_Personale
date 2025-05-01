@@ -10,7 +10,7 @@
 
     <title>Benvenuto - Gestione Film</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>

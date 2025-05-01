@@ -58,7 +58,7 @@ if ($conn->connect_error) {
 
     <title>Home - Valutazione Film</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./style.css">
 
 </head>
 <a href="endSession.php" class="logout-button">Logout</a>
