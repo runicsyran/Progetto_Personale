@@ -41,7 +41,7 @@ if ($conn->connect_error) {
     <link rel="stylesheet" href="../css/style.css">
 
 </head>
-<a href="endSession.php" class="logout-button">Logout</a>
+<a href="Endsession.php" class="logout-button">Logout</a>
 <body>
 
     <h1>Benvenuto, Admin!</h1>
