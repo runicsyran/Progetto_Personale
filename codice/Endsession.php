@@ -22,10 +22,13 @@ session_unset();
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-top: 4px solidrgb(113, 113, 78);
             border-radius: 50%;
-            animation: spin 1s linear infinite;            <?php
+            animation: spin 1s linear infinite;     
+        }       
+        <?php
             session_start();
             session_unset();
             ?>
+    </style>
             <!DOCTYPE html>
             <html lang="it">
             <head>

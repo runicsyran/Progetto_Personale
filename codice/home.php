@@ -94,6 +94,8 @@ if ($conn->connect_error) {
 
     <form action="#">
 
+        <label for="selectIdGenere">Seleziona un genere:</label><br>
+
         <select oninput="submit()" name="idGenere" id="selectIdGenere">
 
             <?php
