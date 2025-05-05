@@ -7,7 +7,7 @@ session_unset();  // Rimuove tutte le variabili di sessione
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="5; url=index.php">
+    <meta http-equiv="refresh" content="3; url=index.php">
     <title>Logout</title>
     <link rel="stylesheet" href="../css/style.css"> <!-- Puoi aggiungere il tuo file CSS qui -->
     <style>
