@@ -2,7 +2,9 @@
 
 session_start(); // Avvia la sessione
 
-
+if(!isset($_GET['idGenere'])) {
+    $_GET["idGenere"] = 1; // Imposta un valore predefinito se non è stato passato
+}
 
 // Controlla se l'utente è loggato
 

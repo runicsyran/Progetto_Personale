@@ -63,7 +63,6 @@
         $result_film = $conn->query($sql_film);
 
 
-
         if ($film = $result_film->fetch_assoc()) {
 
             echo "<h1>" . htmlspecialchars($film['titolo']) . "</h1>";
