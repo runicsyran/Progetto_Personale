@@ -28,7 +28,7 @@ function showPopupSuccessRegistration(){
     successPopup.show();
 }
 
-function showPopupErrorRegistration()(){
+function showPopupErrorRegistration(){
     let successPopup = new Popup({
         id: 'errorPopup',
         title: 'Registrazione fallita',
