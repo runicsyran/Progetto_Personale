@@ -1,4 +1,4 @@
-function validatePassword(form) {
+function validateForm(form) {
     event.preventDefault();
     var password = document.getElementById("password").value;
     var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
@@ -16,4 +16,14 @@ function validatePassword(form) {
     }
     form.submit();
     return true;
+}
+
+function showPopupSuccessRegistration(){
+    let successPopup = new Popup({
+        id: 'successPopup',
+        title: 'Registrazione completata',
+        content: 'La registrazione è avvenuta con successo!',
+        allowClose: true
+    });
+    successPopup.show();
 }

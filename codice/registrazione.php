@@ -22,7 +22,7 @@
 
     <h2>Registrazione</h2>
 
-    <form action="registrazione.php" method="post" onsubmit="return validateForm()">
+    <form action="registrazione.php" method="post" onsubmit="return validateForm(this)">
 
         <label for="username">Username:</label>
 
@@ -99,14 +99,8 @@
             ?>
             <h3>Registrazione avvenuta con successo</h3>
             <script>
-                let successPopup = new Popup({
-                    id: 'successPopup',
-                    title: 'Registrazione completata',
-                    content: 'La registrazione è avvenuta con successo!',
-                    allowClose: true
-                });
-                successPopup.show();
-            </script>";
+                showPopupSuccessRegistration();
+            </script>
             <!-- <meta http-equiv="refresh" content="3; url=https://michelangelocuccui.altervista.org/codice/login.php">        -->
             <?php
             exit();
