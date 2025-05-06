@@ -10,7 +10,7 @@
 
     <title>Registrazione</title>
 
-    <script src="../js/scripts.js"></script>
+    <script src="../js/script.js"></script>
 
     <script src="../js/Popup.js"></script>
 
