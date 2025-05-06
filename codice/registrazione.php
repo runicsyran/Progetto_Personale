@@ -10,9 +10,9 @@
 
     <title>Registrazione</title>
 
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
 
-    <script src="js/Popup.js"></script>
+    <script src="../js/Popup.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
 
@@ -22,7 +22,7 @@
 
     <h2>Registrazione</h2>
 
-    <form action="registrazione.php" method="post" onsubmit="return validatePassword(THIS)">
+    <form action="registrazione.php" method="post" onsubmit="return validateForm()">
 
         <label for="username">Username:</label>
 
@@ -99,7 +99,7 @@
             echo "Registrazione avvenuta con successo";
 
             ?><meta http-equiv="refresh" content="0; url=https://michelangelocuccui.altervista.org/codice/login.php"><?php       
-
+            
             exit();
 
         } else {
