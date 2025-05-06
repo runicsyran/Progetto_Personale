@@ -15,120 +15,122 @@
 </head>
 <a href="Endsession.php" class="logout-button">Logout</a>
 <body>
+    <div style="width: 93vw;">
 
-    <?php
+        <?php
 
-    // Connessione al database
+        // Connessione al database
 
-    $servername = "localhost";
+        $servername = "localhost";
 
-    $username = "root";
+        $username = "root";
 
-    $password = "";
+        $password = "";
 
-    $dbname = "my_michelangelocuccui";
-
-
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
+        $dbname = "my_michelangelocuccui";
 
 
 
-    // Controlla connessione
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-    if ($conn->connect_error) {
 
-        die("Connessione fallita: " . $conn->connect_error);
 
-    }
+        // Controlla connessione
 
-    
+        if ($conn->connect_error) {
 
-    // Recupera l'ID del film dalla query string
+            die("Connessione fallita: " . $conn->connect_error);
 
-    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-
-        $film_id = intval($_GET['id']);
+        }
 
         
 
-        // Recupera i dettagli del film
+        // Recupera l'ID del film dalla query string
 
-        $sql_film = "SELECT * 
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
-                     FROM film 
+            $film_id = intval($_GET['id']);
 
-                     WHERE id = $film_id";
+            
 
-        $result_film = $conn->query($sql_film);
+            // Recupera i dettagli del film
 
+            $sql_film = "SELECT * 
 
-        if ($film = $result_film->fetch_assoc()) {
+                        FROM film 
 
-            echo "<h1>" . htmlspecialchars($film['titolo']) . "</h1>";
+                        WHERE id = $film_id";
 
-            echo "<p><strong>Regista:</strong> " . htmlspecialchars($film['regista']) . "</p>";
-
-            echo "<p><strong>Data di rilascio:</strong> " . htmlspecialchars($film['data_rilascio']) . "</p>";
-
-            echo "<p><strong>Lunghezza:</strong> " . htmlspecialchars($film['lunghezza']) . " minuti</p>";
-
-            echo "<p><strong>Descrizione:</strong> " . htmlspecialchars($film['descrizione']) . "</p>";
+            $result_film = $conn->query($sql_film);
 
 
+            if ($film = $result_film->fetch_assoc()) {
 
-            // Recupera le valutazioni e i commenti
+                echo "<h1>" . htmlspecialchars($film['titolo']) . "</h1>";
 
-            $sql_recensioni = "SELECT valutazione, commento 
+                echo "<p><strong>Regista:</strong> " . htmlspecialchars($film['regista']) . "</p>";
 
-                               FROM recensione 
+                echo "<p><strong>Data di rilascio:</strong> " . htmlspecialchars($film['data_rilascio']) . "</p>";
 
-                               WHERE film_id = $film_id";
+                echo "<p><strong>Lunghezza:</strong> " . htmlspecialchars($film['lunghezza']) . " minuti</p>";
 
-            $result_recensioni = $conn->query($sql_recensioni);
+                echo "<p><strong>Descrizione:</strong> " . htmlspecialchars($film['descrizione']) . "</p>";
 
 
 
-            echo "<h2>Recensioni</h2>";
+                // Recupera le valutazioni e i commenti
 
-            if ($result_recensioni->num_rows > 0) {
+                $sql_recensioni = "SELECT valutazione, commento 
 
-                while ($recensione = $result_recensioni->fetch_assoc()) {
+                                FROM recensione 
 
-                    echo "<div class='recensione'>";
+                                WHERE film_id = $film_id";
 
-                    echo "<p><strong>Valutazione:</strong> " . htmlspecialchars($recensione['valutazione']) . " / 5</p>";
+                $result_recensioni = $conn->query($sql_recensioni);
 
-                    echo "<p><strong>Commento:</strong> " . htmlspecialchars($recensione['commento']) . "</p>";
 
-                    echo "</div>";
+
+                echo "<h2>Recensioni</h2>";
+
+                if ($result_recensioni->num_rows > 0) {
+
+                    while ($recensione = $result_recensioni->fetch_assoc()) {
+
+                        echo "<div class='recensione'>";
+
+                        echo "<p><strong>Valutazione:</strong> " . htmlspecialchars($recensione['valutazione']) . " / 5</p>";
+
+                        echo "<p><strong>Commento:</strong> " . htmlspecialchars($recensione['commento']) . "</p>";
+
+                        echo "</div>";
+
+                    }
+
+                } else {
+
+                    echo "<p>Nessuna recensione disponibile per questo film.</p>";
 
                 }
 
             } else {
 
-                echo "<p>Nessuna recensione disponibile per questo film.</p>";
+                echo "<p>Film non trovato.</p>";
 
             }
 
         } else {
 
-            echo "<p>Film non trovato.</p>";
+            echo "<p>ID film non valido.</p>";
 
         }
 
-    } else {
-
-        echo "<p>ID film non valido.</p>";
-
-    }
 
 
+        $conn->close();
 
-    $conn->close();
-
-    ?>
-    <a href="home.php" class="home_button">Torna alla Home</a>
+        ?>
+        <a href="home.php" class="home_button">Torna alla Home</a>
+    </div>
 </body>
 
 </html>
