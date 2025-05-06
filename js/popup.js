@@ -90,16 +90,17 @@ class Popup {
         this.css += `
         .popup.${this.id} {
             transition-duration: ${this.fadeTime};
-            text-shadow: ${this.textShadow};
-            font-family: '${this.params.font ?? "Inter"}', 'Inter', Helvetica, sans-serif;
+            text-shadow: 0 0 5px var(--shadow-color), 0 0 10px var(--glow-color);
+            font-family: 'Orbitron', sans-serif;
         }
         
         .popup.${this.id} .popup-content {
-            background-color: ${this.backgroundColor};
+            background-color: var(--panel-bg);
             width: ${this.width}; 
             height: ${this.fixedHeight ? this.height : "unset"};
             border-radius: ${this.borderRadius};
-            border: ${this.borderWidth} solid ${this.borderColor};
+            border: ${this.borderWidth} solid var(--neon-orange);
+            box-shadow: 0 0 20px var(--shadow-color), 0 0 40px var(--glow-color);
         }
 
         .popup.${this.id} .popup-header {
@@ -107,15 +108,19 @@ class Popup {
         }
 
         .popup.${this.id} .popup-title {
-            color: ${this.titleColor};
+            color: var(--highlight-text);
+            text-transform: uppercase;
+            text-shadow: 0 0 5px var(--shadow-color), 0 0 10px var(--glow-color);
         }
 
         .popup.${this.id} .popup-close {
-            color: ${this.closeColor};
+            color: var(--neon-orange);
+            font-size: 1.5em;
+            cursor: pointer;
         }
 
         .popup.${this.id} .popup-body {
-            color: ${this.textColor};
+            color: var(--text-color);
             margin-left: ${this.sideMargin};
             margin-right: ${this.sideMargin};
             line-height: ${this.lineSpacing};
@@ -124,10 +129,28 @@ class Popup {
 
         .popup.${this.id} .popup-body button { 
             width: ${this.buttonWidth}; 
+            background: linear-gradient(135deg, var(--neon-yellow), var(--neon-orange));
+            color: var(--darker-bg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--shadow-color);
+        }
+
+        .popup.${this.id} .popup-body button:hover {
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-red));
+            box-shadow: 0 0 15px var(--shadow-color), 0 0 30px var(--glow-color);
         }
 
         .popup.${this.id} .popup-body a { 
-            color: ${this.linkColor};
+            color: var(--neon-yellow);
             ${this.underlineLinks ? "text-decoration: underline;" : ""}
         }`;
 
@@ -164,7 +187,7 @@ class Popup {
             line = line
                 .replace(/([^\\]?){/g, '$1<span class="')
                 .replace(/([^\\]?)}\[/g, '$1">')
-                .replace(/([^\\]?)]/g, "$1</span>");
+                .replace(/([^\\}?\)])/g, "$1</span>");
 
             this.content[i] = line;
         }

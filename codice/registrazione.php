@@ -96,10 +96,18 @@
 
         if ($conn->query($sql) === TRUE) {
 
-            echo "Registrazione avvenuta con successo";
-
-            ?><meta http-equiv="refresh" content="0; url=https://michelangelocuccui.altervista.org/codice/login.php"><?php       
-            
+            ?>
+            <h3>Registrazione avvenuta con successo</h3>
+            <script>
+                const successPopup = new Popup({
+                    id: 'successPopup',
+                    title: 'Registrazione completata',
+                    content: 'La registrazione è avvenuta con successo!',
+                    allowClose: true
+                });
+                successPopup.show();
+            </script>";
+            <meta http-equiv="refresh" content="3; url=https://michelangelocuccui.altervista.org/codice/login.php"><?php       
             exit();
 
         } else {
