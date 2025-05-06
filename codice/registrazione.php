@@ -99,7 +99,7 @@
             ?>
             <h3>Registrazione avvenuta con successo</h3>
             <script>
-                const successPopup = new Popup({
+                let successPopup = new Popup({
                     id: 'successPopup',
                     title: 'Registrazione completata',
                     content: 'La registrazione è avvenuta con successo!',
@@ -107,7 +107,8 @@
                 });
                 successPopup.show();
             </script>";
-            <meta http-equiv="refresh" content="3; url=https://michelangelocuccui.altervista.org/codice/login.php"><?php       
+            <!-- <meta http-equiv="refresh" content="3; url=https://michelangelocuccui.altervista.org/codice/login.php">        -->
+            <?php
             exit();
 
         } else {
