@@ -15,7 +15,7 @@
 </head>
 <a href="Endsession.php" class="logout-button">Logout</a>
 <body>
-    <div style="width: 93vw;">
+    <div style="width: 93vw; align-items: center;">
 
         <?php
 
