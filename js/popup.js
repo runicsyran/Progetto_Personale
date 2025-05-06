@@ -257,9 +257,13 @@ class Popup {
     }
 
     hide() {
+        if (!this.popupEl) {
+            console.error("Popup element not found.");
+            return;
+        }
         this.popupEl.classList.remove("fade-in");
         this.popupEl.classList.add("fade-out");
-        // remember for next time
+        // Ricorda per la prossima volta
         if (localStorage && this.showOnce) {
             localStorage.setItem("popup-" + this.id, true);
         }
