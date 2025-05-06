@@ -101,7 +101,7 @@
             <script>
                 showPopupSuccessRegistration();
             </script>
-            <!-- <meta http-equiv="refresh" content="3; url=https://michelangelocuccui.altervista.org/codice/login.php">        -->
+            <meta http-equiv="refresh" content="3; url=https://michelangelocuccui.altervista.org/codice/login.php">
             <?php
             exit();
 
