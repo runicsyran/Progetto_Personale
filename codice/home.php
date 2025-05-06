@@ -92,30 +92,21 @@ if ($conn->connect_error) {
 
 
 
-    <form action="#">
-
+    <form action="#" method="GET">
         <label for="selectIdGenere">Seleziona un genere:</label><br>
-
         <select oninput="submit()" name="idGenere" id="selectIdGenere">
-
+            <option value="17" <?php if ($_GET["idGenere"] == 17) echo "selected"; ?>>Tutti</option>
             <?php
-
                 $result = $conn->query("SELECT * FROM genere");
-
                 while ($row = $result->fetch_assoc()) {
-
                     ?>
-
-                        <option value="<?php echo $row['id']; ?>" <?php if($row["id"] == $_GET["idGenere"]) echo "selected"?>><?php echo $row['nome_genere']; ?></option>
-
+                    <option value="<?php echo $row['id']; ?>" <?php if ($row["id"] == $_GET["idGenere"]) echo "selected"; ?>>
+                        <?php echo $row['nome_genere']; ?>
+                    </option>
                     <?php
-
                 }
-
             ?>
-
         </select>
-
     </form>
 
 
@@ -218,13 +209,17 @@ if ($conn->connect_error) {
 
 
 
-        $sql_film = "SELECT film.id, film.titolo, film.regista, film.data_rilascio, film.lunghezza 
-
-                     FROM film 
-
-                     INNER JOIN film_genere ON film.id = film_genere.film_id 
-
-                     WHERE film_genere.genere_id = " . $_GET["idGenere"];
+        // Modifica la query per mostrare i film in base al genere selezionato
+        if ($_GET["idGenere"] == 17) {
+            // Mostra tutti i film
+            $sql_film = "SELECT film.id, film.titolo, film.regista, film.data_rilascio, film.lunghezza FROM film";
+        } else {
+            // Mostra i film del genere selezionato
+            $sql_film = "SELECT film.id, film.titolo, film.regista, film.data_rilascio, film.lunghezza 
+                         FROM film 
+                         INNER JOIN film_genere ON film.id = film_genere.film_id 
+                         WHERE film_genere.genere_id = " . $_GET["idGenere"];
+        }
 
         $result_film = $conn->query($sql_film);
 
