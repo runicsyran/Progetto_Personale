@@ -109,7 +109,7 @@
 
             ?>
             <script>
-            showPopupErrorRegistration()
+                showPopupErrorRegistration();
             </script>
             <?php
         }
