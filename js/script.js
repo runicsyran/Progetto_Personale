@@ -32,7 +32,7 @@ function showPopupErrorRegistration(){
     let errorPopup = new Popup({
         id: 'errorPopup',
         title: 'Registrazione fallita',
-        content: 'La registrazione è fallita, l utente potrebbe essere già registrato',
+        content: "La registrazione è fallita, l'utente potrebbe essere già registrato",
         allowClose: true
     });
     errorPopup.show();
