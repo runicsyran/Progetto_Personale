@@ -167,9 +167,9 @@ class Popup {
             // add <p>
             if (line.includes("§")) {
                 const split = line.split("§");
-                line = `<p class="${split[0].trim()}">${split[1].trim()}</p>`;
+                line = `${split[1].trim()}`;
             } else {
-                line = `<p>${line}</p>`;
+                line = `${line}`;
             }
 
             // replace two spaces with nbsps
