@@ -84,7 +84,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-        echo "Film inserito con successo!";
+        // Mostra il popup di successo
+        echo "<script>
+            let successPopup = new Popup({
+                id: 'successPopup',
+                title: 'Film Inserito',
+                content: 'Il film \"$titolo\" è stato inserito correttamente!',
+                allowClose: true
+            });
+            successPopup.show();
+        </script>";
 
     } else {
 
