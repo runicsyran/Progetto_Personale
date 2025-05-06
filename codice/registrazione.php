@@ -107,9 +107,11 @@
 
         } else {
 
-            echo "Errore: " . $sql . "<br>" . $conn->error;
-            
-
+            ?>
+            <script>
+            showPopupErrorRegistration()
+            </script>
+            <?php
         }
 
 

@@ -27,3 +27,13 @@ function showPopupSuccessRegistration(){
     });
     successPopup.show();
 }
+
+function showPopupErrorRegistration()(){
+    let successPopup = new Popup({
+        id: 'errorPopup',
+        title: 'Registrazione fallita',
+        content: 'La registrazione è fallita, l utente potrebbe essere già registrato',
+        allowClose: true
+    });
+    successPopup.show();
+}
