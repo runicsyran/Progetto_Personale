@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Mostra il popup di successo
         echo "<script>
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('load', function() {
                 const popup = new Popup({
                     id: 'success-popup',
                     title: 'Successo!',
