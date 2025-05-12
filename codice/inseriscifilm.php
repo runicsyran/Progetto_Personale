@@ -7,77 +7,6 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/Popup.js"></script>
 </head>
-<?php
-
-session_start();
-
-// Controlla se l'utente è loggato e se è un admin
-if (!isset($_SESSION['username']) || $_SESSION['user_role'] !== 'admin') {
-    die("Accesso negato. Solo gli amministratori possono accedere a questa pagina.");
-}
-
-// Connessione al database
-$conn = new mysqli('localhost', 'root', '', 'my_michelangelocuccui');
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
-}
-
-// Gestione dell'inserimento
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titolo = $conn->real_escape_string($_POST['titolo']);
-    $regista = $conn->real_escape_string($_POST['regista']);
-    $data_rilascio = $conn->real_escape_string($_POST['data_rilascio']);
-    $lunghezza = intval($_POST['lunghezza']);
-    $attori = $_POST['attori']; // Array di attori
-    $generi = $_POST['generi']; // Array di generi
-
-    // Inserisci il film nella tabella `film`
-    $sql_film = "INSERT INTO film (titolo, regista, data_rilascio, lunghezza) 
-                 VALUES ('$titolo', '$regista', '$data_rilascio', $lunghezza)";
-    if ($conn->query($sql_film) === TRUE) {
-        $film_id = $conn->insert_id; // Ottieni l'ID del film appena inserito
-
-        // Inserisci gli attori nella tabella `film_attore`
-        if (!empty($attori)) {
-            $stmt_attore = $conn->prepare("INSERT INTO film_attore (film_id, attore_id) VALUES (?, ?)");
-            foreach ($attori as $attore_id) {
-                $stmt_attore->bind_param('ii', $film_id, $attore_id);
-                $stmt_attore->execute();
-            }
-            $stmt_attore->close();
-        }
-
-        // Inserisci i generi nella tabella `film_genere`
-        if (!empty($generi)) {
-            $stmt_genere = $conn->prepare("INSERT INTO film_genere (film_id, genere_id) VALUES (?, ?)");
-            foreach ($generi as $genere_id) {
-                $stmt_genere->bind_param('ii', $film_id, $genere_id);
-                $stmt_genere->execute();
-            }
-            $stmt_genere->close();
-        }
-
-        // Mostra il popup di successo
-        echo "<script>
-            document.addEventListener('load', function() {
-                const popup = new Popup({
-                    id: 'success-popup',
-                    title: 'Successo!',
-                    content: 'Il film \"$titolo\" è stato inserito correttamente!',
-                    allowClose: true,
-                    showImmediately: true,
-                    hideCallback: function() {
-                        window.location.href = 'gestione.php';
-                    }
-                });
-                popup.show();
-            });
-        </script>";
-    } else {
-        echo "Errore durante l'inserimento del film: " . $conn->error;
-    }
-}
-?>
 <body>
     <h1>Inserisci un nuovo film</h1>
     <form action="inseriscifilm.php" method="POST">
@@ -116,5 +45,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" value="Inserisci Film">
     </form>
     <a href="gestione.php" class="gestione_button">Torna a Gestione</a>
+    <?php
+
+    session_start();
+
+    // Controlla se l'utente è loggato e se è un admin
+    if (!isset($_SESSION['username']) || $_SESSION['user_role'] !== 'admin') {
+        die("Accesso negato. Solo gli amministratori possono accedere a questa pagina.");
+    }
+
+    // Connessione al database
+    $conn = new mysqli('localhost', 'root', '', 'my_michelangelocuccui');
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+
+    // Gestione dell'inserimento
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $titolo = $conn->real_escape_string($_POST['titolo']);
+        $regista = $conn->real_escape_string($_POST['regista']);
+        $data_rilascio = $conn->real_escape_string($_POST['data_rilascio']);
+        $lunghezza = intval($_POST['lunghezza']);
+        $attori = $_POST['attori']; // Array di attori
+        $generi = $_POST['generi']; // Array di generi
+
+        // Inserisci il film nella tabella `film`
+        $sql_film = "INSERT INTO film (titolo, regista, data_rilascio, lunghezza) 
+                    VALUES ('$titolo', '$regista', '$data_rilascio', $lunghezza)";
+        if ($conn->query($sql_film) === TRUE) {
+            $film_id = $conn->insert_id; // Ottieni l'ID del film appena inserito
+
+            // Inserisci gli attori nella tabella `film_attore`
+            if (!empty($attori)) {
+                $stmt_attore = $conn->prepare("INSERT INTO film_attore (film_id, attore_id) VALUES (?, ?)");
+                foreach ($attori as $attore_id) {
+                    $stmt_attore->bind_param('ii', $film_id, $attore_id);
+                    $stmt_attore->execute();
+                }
+                $stmt_attore->close();
+            }
+
+            // Inserisci i generi nella tabella `film_genere`
+            if (!empty($generi)) {
+                $stmt_genere = $conn->prepare("INSERT INTO film_genere (film_id, genere_id) VALUES (?, ?)");
+                foreach ($generi as $genere_id) {
+                    $stmt_genere->bind_param('ii', $film_id, $genere_id);
+                    $stmt_genere->execute();
+                }
+                $stmt_genere->close();
+            }
+
+            // Mostra il popup di successo
+            echo "<script>
+                document.addEventListener('load', function() {
+                    const popup = new Popup({
+                        id: 'success-popup',
+                        title: 'Successo!',
+                        content: 'Il film \"$titolo\" è stato inserito correttamente!',
+                        allowClose: true,
+                        showImmediately: true,
+                        hideCallback: function() {
+                            window.location.href = 'gestione.php';
+                        }
+                    });
+                    popup.show();
+                });
+            </script>";
+        } else {
+            echo "Errore durante l'inserimento del film: " . $conn->error;
+        }
+    }
+    ?>
 </body>
 </html>
