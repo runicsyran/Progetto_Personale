@@ -96,12 +96,12 @@
             }
 
             // Mostra il popup di successo
-            echo "<script>
+            echo `<script>
                 document.addEventListener('load', function() {
                     const popup = new Popup({
                         id: 'success-popup',
                         title: 'Successo!',
-                        content: 'Il film \"$titolo\" è stato inserito correttamente!',
+                        content: 'Il film $titolo è stato inserito correttamente!',
                         allowClose: true,
                         showImmediately: true,
                         hideCallback: function() {
@@ -110,7 +110,7 @@
                     });
                     popup.show();
                 });
-            </script>";
+            </script>`;
         } else {
             echo "Errore durante l'inserimento del film: " . $conn->error;
         }
