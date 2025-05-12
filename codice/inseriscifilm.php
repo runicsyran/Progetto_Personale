@@ -1,3 +1,18 @@
+<?php
+
+    session_start();
+
+    // Controlla se l'utente è loggato e se è un admin
+    if (!isset($_SESSION['username']) || $_SESSION['user_role'] !== 'admin') {
+        die("Accesso negato. Solo gli amministratori possono accedere a questa pagina.");
+    }
+
+    // Connessione al database
+    $conn = new mysqli('localhost', 'root', '', 'my_michelangelocuccui');
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -46,20 +61,6 @@
     </form>
     <a href="gestione.php" class="gestione_button">Torna a Gestione</a>
     <?php
-
-    session_start();
-
-    // Controlla se l'utente è loggato e se è un admin
-    if (!isset($_SESSION['username']) || $_SESSION['user_role'] !== 'admin') {
-        die("Accesso negato. Solo gli amministratori possono accedere a questa pagina.");
-    }
-
-    // Connessione al database
-    $conn = new mysqli('localhost', 'root', '', 'my_michelangelocuccui');
-    if ($conn->connect_error) {
-        die("Connessione fallita: " . $conn->connect_error);
-    }
-
     // Gestione dell'inserimento
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $titolo = $conn->real_escape_string($_POST['titolo']);
