@@ -502,3 +502,7 @@ footer {
   box-shadow: 0 0 15px var(--shadow-color), 0 0 30px var(--glow-color);
   transform: translateY(-2px);
 }
+
+#comment-form{
+  width: 55vw;
+}

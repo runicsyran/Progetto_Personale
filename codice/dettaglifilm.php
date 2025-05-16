@@ -146,18 +146,20 @@ session_start();
         // Mostra il form solo se l'utente è loggato e non guest
         if ($user_role != 'guest' && isset($user_id)) {
             echo '
-            <form method="POST" style="margin: 60px 0; display: flex; gap: 20px; align-items: center;">
-                <textarea name="commento" placeholder="Scrivi un commento..." required style="flex:4; resize:vertical; min-height:40px;"></textarea>
-                <select name="valutazione" required style="flex:1;">
-                    <option value="">Voto</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <button type="submit" style="flex:2;">Invia</button>
-            </form>
+            <p id="comment-form">
+                <form method="POST" style="margin: 60px 0; display: flex; gap: 20px; align-items: center;">
+                    <textarea name="commento" placeholder="Scrivi un commento..." required style="flex:4; resize:vertical; min-height:40px;"></textarea>
+                    <select name="valutazione" required style="flex:1;">
+                        <option value="">Voto</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <button type="submit" style="flex:2;">Invia</button>
+                </form>
+            </p>
             ';
         } else {
             echo "<p style='color:orange; text-align:center;'>Devi essere loggato per lasciare una recensione.</p>";
