@@ -52,6 +52,8 @@ session_start();
         $user_role = $_SESSION['user_role'] ?? 'guest';
 
         var_dump($_SESSION);
+        var_dump($user_role);
+        var_dump($user_id);
         
         // Recupera l'ID del film dalla query string
 
