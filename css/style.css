@@ -505,4 +505,5 @@ footer {
 
 #comment-form{
   width: 55vw;
+  display: inline-block;
 }
