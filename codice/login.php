@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Query per verificare le credenziali
 
-    $sql = "SELECT username, user_role FROM users WHERE username = ? AND password = ?";
+    $sql = "SELECT username, user_role, id FROM users WHERE username = ? AND password = ?";
 
     $stmt = $conn->prepare($sql);
 
@@ -53,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['username'] = $user['username'];
 
         $_SESSION['user_role'] = $user['user_role']; // Salva il ruolo nella sessione
+
+        $_SESSION['user_id'] = $user['id']; // Salva l'ID utente nella sessione
 
 
 
