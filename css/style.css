@@ -505,7 +505,7 @@ footer {
 
 #comment-form{
   width: 100%;
-  max-width: 100%;
+  max-width: calc(100%-50px);
   display: flex;
   gap: 20px;
   align-items: center;
