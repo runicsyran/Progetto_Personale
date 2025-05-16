@@ -43,8 +43,11 @@
 
         }
 
+        // Recupera user_role e user_id dalla sessione
+        session_start();
+        $user_id = $_SESSION['user_id'] ?? null;
+        $user_role = $_SESSION['user_role'] ?? 'user';
         
-
         // Recupera l'ID del film dalla query string
 
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -124,7 +127,37 @@
 
         }
 
+        // Gestione inserimento commento
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['commento'], $_POST['valutazione']) && $user_role != 'guest') {
+            $commento = $conn->real_escape_string($_POST['commento']);
+            $valutazione = intval($_POST['valutazione']);
+            if ($valutazione >= 1 && $valutazione <= 5 && !empty($commento)) {
+                $sql_inserisci = "INSERT INTO recensione (film_id, user_id, valutazione, commento) VALUES ($film_id, $user_id, $valutazione, '$commento')";
+                $conn->query($sql_inserisci);
+                // Refresh per mostrare subito il commento
+                echo "<meta http-equiv='refresh' content='0'>";
+            }
+        }
 
+        // Mostra il form solo se l'utente è loggato e non guest
+        if ($user_role != 'guest' && isset($user_id)) {
+            echo '
+            <form method="POST" style="margin: 30px 0; display: flex; gap: 10px; align-items: center;">
+                <textarea name="commento" placeholder="Scrivi un commento..." required style="flex:2; resize:vertical; min-height:40px;"></textarea>
+                <select name="valutazione" required style="flex:0;">
+                    <option value="">Voto</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit" style="flex:0;">Invia</button>
+            </form>
+            ';
+        } else {
+            echo "<p style='color:orange; text-align:center;'>Devi essere loggato per lasciare una recensione.</p>";
+        }
 
         $conn->close();
 

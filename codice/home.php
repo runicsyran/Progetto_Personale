@@ -1,20 +1,16 @@
 <?php
-
 session_start(); // Avvia la sessione
+
+// Controlla se l'utente è autenticato
+if (!isset($_SESSION['username'])) {
+    $user_role = 'guest';
+} else {
+    $user_role = $_SESSION['user_role'];
+}
 
 if(!isset($_GET['idGenere'])) {
     $_GET["idGenere"] = 17; // Imposta un valore predefinito se non è stato passato
 }
-
-// Controlla se l'utente è loggato
-
-if (!isset($_SESSION['username'])) {
-
-    die("Accesso negato. Effettua il login per accedere a questa pagina.");
-
-}
-
-
 
 $user_role = $_SESSION['user_role']; // Recupera il ruolo dell'utente
 
