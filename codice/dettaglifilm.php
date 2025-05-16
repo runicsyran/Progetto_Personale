@@ -50,12 +50,7 @@ session_start();
         
         $user_id = $_SESSION['user_id'] ?? null;
         $user_role = $_SESSION['user_role'] ?? 'guest';
-
-        var_dump($_SESSION);
-        
-        var_dump($user_role);
-        
-        var_dump($user_id);
+;
         
         // Recupera l'ID del film dalla query string
 
@@ -153,7 +148,7 @@ session_start();
             echo '
             <form method="POST" style="margin: 30px 0; display: flex; gap: 10px; align-items: center;">
                 <textarea name="commento" placeholder="Scrivi un commento..." required style="flex:2; resize:vertical; min-height:40px;"></textarea>
-                <select name="valutazione" required style="flex:0;">
+                <select name="valutazione" required style="flex:5;">
                     <option value="">Voto</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
