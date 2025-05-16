@@ -45,8 +45,8 @@
 
         // Recupera user_role e user_id dalla sessione
         session_start();
-        $user_id = $_SESSION['id'] ?? null;
-        $user_role = (isset($_SESSION['user_role']) && ($_SESSION['user_role'] === 'admin' || $_SESSION['user_role'] === 'user')) ? $_SESSION['user_role'] : 'guest';
+        $user_id = $_SESSION['user_id'] ?? null;
+        $user_role = $_SESSION['user_role'] ?? 'guest';
         
         // Recupera l'ID del film dalla query string
 
