@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <html lang="it">
@@ -18,7 +21,7 @@
     <div style="padding: 3vw;">
 
         <?php
-
+    
         // Connessione al database
 
         $servername = "localhost";
@@ -44,7 +47,7 @@
         }
 
         // Recupera user_role e user_id dalla sessione
-        session_start();
+        
         $user_id = $_SESSION['user_id'] ?? null;
         $user_role = $_SESSION['user_role'] ?? 'guest';
         
