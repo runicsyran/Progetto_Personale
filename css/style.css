@@ -503,9 +503,9 @@ footer {
   transform: translateY(-2px);
 }
 
-#comment-form{
+#comment-form{ 
   width: 100%;
-  max-width: 97%;
+  max-width: 97%; /* Limita la larghezza del form e contrasta con il form generale*/
   display: flex;
   gap: 20px;
   align-items: center;
