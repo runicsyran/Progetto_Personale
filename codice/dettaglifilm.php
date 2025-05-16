@@ -146,9 +146,9 @@ session_start();
         // Mostra il form solo se l'utente è loggato e non guest
         if ($user_role != 'guest' && isset($user_id)) {
             echo '
-            <form method="POST" style="margin: 30px 0; display: flex; gap: 10px; align-items: center;">
+            <form method="POST" style="margin: 40px 0; display: flex; gap: 10px; align-items: center;">
                 <textarea name="commento" placeholder="Scrivi un commento..." required style="flex:2; resize:vertical; min-height:40px;"></textarea>
-                <select name="valutazione" required style="flex:5;">
+                <select name="valutazione" required style="flex:2;">
                     <option value="">Voto</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
