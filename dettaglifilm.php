@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // Gestione inserimento recensione
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['username'])) {
     if (isset($_POST['valutazione']) && isset($_POST['commento']) && isset($_POST['film_id'])) {
         $film_id = intval($_POST['film_id']);
         $_GET["id"] = $film_id;
