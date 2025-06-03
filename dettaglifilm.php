@@ -18,6 +18,7 @@ if ($conn->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
     if (isset($_POST['valutazione']) && isset($_POST['commento']) && isset($_POST['film_id'])) {
         $film_id = intval($_POST['film_id']);
+        $_GET["id"] = $film_id;
         $valutazione = intval($_POST['valutazione']);
         $commento = trim($_POST['commento']);
         
@@ -101,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
                     echo "<h3>Aggiungi la tua recensione</h3>";
                     echo "<form method='POST' action='/dettaglifilm.php' style='align-items: center; gap: 10px; margin: 20px 0;'>";
                     echo "<input type='hidden' name='film_id' value='" . $film_id . "'>";
-                    
+                    echo "<input type='hidden' name='id' value='" . $film_id . "'>";
                     echo "<input type='text' name='commento' placeholder='Scrivi il tuo commento...' required style='flex: 1; padding: 8px; border: 1px solid #ccc;'>";
                     
                     echo "<select name='valutazione' required style='padding: 8px; border: 1px solid #ccc;'>";
