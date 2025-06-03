@@ -14,31 +14,7 @@ if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
 
-
-?>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dettagli Film</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <?php
-    // Mostra il pulsante logout solo se l'utente è loggato
-    if (isset($_SESSION['user_id'])) {
-        echo '<a href="Endsession.php" class="logout-button">Logout</a>';
-    } else {
-        echo '<a href="login.php" class="login-button">Login</a>';
-    }
-    ?>
-    
-    <div style="padding: 3vw;">
-        <?php
-
-
-        // Gestione inserimento recensione
+// Gestione inserimento recensione
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
     if (isset($_POST['valutazione']) && isset($_POST['commento']) && isset($_POST['film_id'])) {
         $film_id = intval($_POST['film_id']);
@@ -80,6 +56,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
         }
     }
 }
+?>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Film</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <?php
+    // Mostra il pulsante logout solo se l'utente è loggato
+    if (isset($_SESSION['user_id'])) {
+        echo '<a href="Endsession.php" class="logout-button">Logout</a>';
+    } else {
+        echo '<a href="login.php" class="login-button">Login</a>';
+    }
+    ?>
+    
+    <div style="padding: 3vw;">
+        <?php
+
         // Recupera l'ID del film dalla query string
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $film_id = intval($_GET['id']);
@@ -101,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
                 // Form per inserire recensione (per tutti gli utenti loggati)
                 if (isset($_SESSION['user_id']) || isset($_SESSION['id']) || isset($_SESSION['username'])) {
                     echo "<h3>Aggiungi la tua recensione</h3>";
-                    echo "<form method='POST' action='' style='align-items: center; gap: 10px; margin: 20px 0;'>";
+                    echo "<form method='POST' action='/dettaglifilm.php' style='align-items: center; gap: 10px; margin: 20px 0;'>";
                     echo "<input type='hidden' name='film_id' value='" . $film_id . "'>";
                     
                     echo "<input type='text' name='commento' placeholder='Scrivi il tuo commento...' required style='flex: 1; padding: 8px; border: 1px solid #ccc;'>";
