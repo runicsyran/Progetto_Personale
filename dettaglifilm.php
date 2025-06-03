@@ -14,7 +14,31 @@ if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
 
-// Gestione inserimento recensione
+
+?>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Film</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <?php
+    // Mostra il pulsante logout solo se l'utente è loggato
+    if (isset($_SESSION['user_id'])) {
+        echo '<a href="Endsession.php" class="logout-button">Logout</a>';
+    } else {
+        echo '<a href="login.php" class="login-button">Login</a>';
+    }
+    ?>
+    
+    <div style="padding: 3vw;">
+        <?php
+
+
+        // Gestione inserimento recensione
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
     if (isset($_POST['valutazione']) && isset($_POST['commento']) && isset($_POST['film_id'])) {
         $film_id = intval($_POST['film_id']);
@@ -56,46 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
         }
     }
 }
-?>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dettagli Film</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <?php
-    // Mostra il pulsante logout solo se l'utente è loggato
-    if (isset($_SESSION['user_id'])) {
-        echo '<a href="Endsession.php" class="logout-button">Logout</a>';
-    } else {
-        echo '<a href="login.php" class="login-button">Login</a>';
-    }
-    ?>
-    
-    <div style="padding: 3vw;">
-        <?php
-        // Debug delle variabili di sessione
-        echo "<!-- DEBUG SESSIONE: ";
-        if (!empty($_SESSION)) {
-            foreach ($_SESSION as $key => $value) {
-                echo "$key = $value | ";
-            }
-        } else {
-            echo "SESSIONE VUOTA";
-        }
-        echo " -->";
-        
-        // Mostra messaggi di successo/errore
-        if (isset($success_message)) {
-            echo "<div class='success-message'>$success_message</div>";
-        }
-        if (isset($error_message)) {
-            echo "<div class='error-message'>$error_message</div>";
-        }
-
         // Recupera l'ID del film dalla query string
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $film_id = intval($_GET['id']);
