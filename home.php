@@ -58,6 +58,7 @@ if ($conn->connect_error) {
         <button type="submit">Cerca</button>      
     </form>        
 
+    
     <form action="#" method="GET">         
         <label for="selectIdGenere">Seleziona un genere:</label><br>         
         <select oninput="submit()" name="idGenere" id="selectIdGenere">             
