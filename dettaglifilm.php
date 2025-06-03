@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id'])) {
     
     <div style="padding: 3vw;">
         <?php
-
+        var_dump($_GET);
         // Recupera l'ID del film dalla query string
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $film_id = intval($_GET['id']);
